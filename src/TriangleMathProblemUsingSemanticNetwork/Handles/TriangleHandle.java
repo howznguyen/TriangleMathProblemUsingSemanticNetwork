@@ -1,7 +1,6 @@
-package BaiToanTamGiac.Handles;
+package TriangleMathProblemUsingSemanticNetwork.Handles;
 
 import javax.swing.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class TriangleHandle {
@@ -11,6 +10,16 @@ public class TriangleHandle {
     private int [][] RTable = new int[this.elementsNumber][this.equationNumber]; // Relationship Table
     private float [][] VTable = new float[this.elementsNumber][this.equationNumber]; // Value Table
     private int stop;
+
+    /**
+     * Get lstBuocGiai
+     * @return ArrayList<String>
+     */
+    public ArrayList<String> getLstBuocGiai() {
+        return lstBuocGiai;
+    }
+
+    private ArrayList<String> lstBuocGiai = new ArrayList<String>();
 
     /**
      * Get RTable
@@ -31,6 +40,7 @@ public class TriangleHandle {
      * Start Action Calculate
      */
     public void start(ArrayList<JTextField> txtElements,JTextField txtResult, String selectElement){
+        lstBuocGiai.clear();
         boolean flag = true;
         this.getAllElementsInGUI(txtElements);
         while(flag == true){
@@ -162,15 +172,15 @@ public class TriangleHandle {
         switch (thisElement)
         {
             case "Góc Alpha":
-                txtResult.setText(String.valueOf(Math.round((VTable[0][0] * angle) / Math.PI)));
+                txtResult.setText(String.valueOf((float)Math.round((VTable[0][0] * angle) / Math.PI * 100)/ 100));
                 break;
 
             case "Góc Beta":
-                txtResult.setText(String.valueOf(Math.round((VTable[1][0] * angle) / Math.PI)));
+                txtResult.setText(String.valueOf((float)Math.round((VTable[1][0] * angle) / Math.PI * 100)/ 100));
                 break;
 
             case "Góc Delta":
-                txtResult.setText(String.valueOf(Math.round((VTable[2][1] * angle) / Math.PI)));
+                txtResult.setText(String.valueOf((float)Math.round((VTable[2][1] * angle) / Math.PI * 100)/ 100));
                 break;
 
             case "Cạnh A":
@@ -236,22 +246,26 @@ public class TriangleHandle {
                         // α = a*sinβ /b
                         temp = (float) ((VTable[3][0] * Math.sin(VTable[1][0])) / (VTable[4][0]));
                         value = (float)(Math.asin(temp) * angle / 3.1415926535897931);
+                        lstBuocGiai.add("α = a*sinβ /b = " + String.valueOf(value));
                         break;
 
                     case 1:
                         // β = b*sinα /a
                         temp = (float)((VTable[4][0] * Math.sin(VTable[0][0])) / (VTable[3][0]));
                         value = (float)(Math.asin(temp) * angle / 3.1415926535897931);
+                        lstBuocGiai.add("β = b*sinα /a = " + String.valueOf(value));
                         break;
 
                     case 3:
                         // a= b*sinα/ sinβ
                         value = (float)((VTable[4][0] * Math.sin(VTable[0][0])) / Math.sin(VTable[1][0]));
+                        lstBuocGiai.add("a= b*sinα/ sinβ = " + String.valueOf(value));
                         break;
 
                     case 4:
                         // b= a*sinβ /sinα
                         value = (float)((VTable[3][0] * Math.sin(VTable[1][0])) / Math.sin(VTable[0][0]));
+                        lstBuocGiai.add("b= a*sinβ /sinα = " + String.valueOf(value));
                         break;
                 }
                 break;
@@ -263,19 +277,23 @@ public class TriangleHandle {
                         // sinβ= b*sinδ/c
                         temp = (float)((VTable[4][0] * Math.sin(VTable[2][1])) / (VTable[5][1]));
                         value = (float)(Math.asin(temp) * angle / 3.1415926535897931);
+                        lstBuocGiai.add("sinβ = b*sinδ/c = " + String.valueOf(value));
                         break;
                     case 2:
-                        // sinδ = c*sinβ /b
+                        // sinδ = c*sinβ/b
                         temp = (float)((VTable[5][1] * Math.sin(VTable[1][1])) / VTable[4][1]);
                         value = (float)(Math.asin(temp) * angle / 3.1415926535897931);
+                        lstBuocGiai.add("sinδ = c*sinβ/b = " + String.valueOf(value));
                         break;
                     case 4:
-                        // b=c*sinβ/sinδ
+                        // b = c*sinβ/sinδ
                         value = (float)((VTable[5][1] * Math.sin(VTable[1][0])) / Math.sin(VTable[2][1]));
+                        lstBuocGiai.add("b = c*sinβ/sinδ = " + String.valueOf(value));
                         break;
                     case 5:
-                        // c=b*sinδ /sinβ
+                        // c = b*sinδ/sinβ
                         value = (float)((VTable[4][0] * Math.sin(VTable[2][1])) / Math.sin(VTable[1][0]));
+                        lstBuocGiai.add("c = b*sinδ/sinβ = " + String.valueOf(value));
                         break;
                 }
                 break;
@@ -285,24 +303,29 @@ public class TriangleHandle {
                 switch (element)
                 {
                     case 3:
-                        // a=p-(s^2/p*(p-b)(p-c)) ct1
+                        // a = p-(s^2/p*(p-b)(p-c)) ct1
                         value = (float)(perimeterP - (Math.pow(VTable[7][2],2.0) / (perimeterP * (perimeterP - VTable[4][0]) * (perimeterP - VTable[5][1]))));
+                        lstBuocGiai.add("a = p-(s^2/p*(p-b)(p-c)) = " + String.valueOf(value));
                         break;
                     case 4:
-                        // c=p-(s^2/p*(p-a)(p-b))
+                        // c = p-(s^2/p*(p-a)(p-b))
                         value = (float)(perimeterP - (Math.pow(VTable[7][2],2.0) / (perimeterP * (perimeterP - VTable[3][0]) * (perimeterP - VTable[4][1]))));
+                        lstBuocGiai.add("c = p-(s^2/p*(p-a)(p-b)) = " + String.valueOf(value));
                         break;
                     case 5:
-                        // a=p-(s^2/p*(p-b)(p-c)) ct2
+                        // a = p-(s^2/p*(p-b)(p-c)) ct2
                         value = (float)(perimeterP - (Math.pow(VTable[7][2],2.0) / (perimeterP * (perimeterP - VTable[4][1]) * (perimeterP - VTable[5][1]))));
+                        lstBuocGiai.add("a = p-(s^2/p*(p-b)(p-c)) = " + String.valueOf(value));
                         break;
                     case 6:
-                        // p= (a+b+c)/2
+                        // p = (a+b+c)/2
                         value = (float)((VTable[3][0] + VTable[4][0] + VTable[5][1]) / 2f);
+                        lstBuocGiai.add("p = (a+b+c)/2 = " + String.valueOf(value));
                         break;
                     case 7:
-                        // s=sqrt(p(p-a)(p-b)(p-c))
+                        // s = sqrt(p(p-a)(p-b)(p-c))
                         value = (float)Math.sqrt((double)(perimeterP * (perimeterP - VTable[3][0]) * (perimeterP - VTable[4][0]) * (perimeterP - VTable[5][1])));
+                        lstBuocGiai.add("s = sqrt(p(p-a)(p-b)(p-c)) = " + String.valueOf(value));
                         break;
                 }
                 break;
@@ -312,14 +335,17 @@ public class TriangleHandle {
                     case 0:
                         // α = pi-β-δ
                         value = (float)((Math.PI - VTable[1][0] - VTable[2][1]));
+                        lstBuocGiai.add("α = pi-β-δ = " + String.valueOf(value));
                         break;
                     case 1:
                         // β = pi-α-δ
                         value = (float)((Math.PI - VTable[0][0] - VTable[2][1]));
+                        lstBuocGiai.add("β = pi-α-δ = " + String.valueOf(value));
                         break;
                     case 2:
-                        // δ=pi-α-β
+                        // δ = pi-α-β
                         value = (float)((Math.PI - VTable[0][0] - VTable[1][0]));
+                        lstBuocGiai.add("δ = pi-α-β = " + String.valueOf(value));
                         break;
                 }
                 break;
@@ -327,16 +353,19 @@ public class TriangleHandle {
                 switch (element)
                 {
                     case 5:
-                        // c=2*s/h
+                        // c = 2*s/h
                         value = (float)(2f * VTable[7][2] / VTable[8][4]);
+                        lstBuocGiai.add("c = 2*s/h = " + String.valueOf(value));
                         break;
                     case 7:
-                        // h=2s/c ct3
+                        // h = 2s/c ct3
                         value = (float)(2f * VTable[7][4] / VTable[5][1]);
+                        lstBuocGiai.add("h = 2s/c = " + String.valueOf(value));
                         break;
                     case 8:
-                        // h=2s/c ct5
+                        // h = 2s/c ct5
                         value = (float)(2f * VTable[7][2] / VTable[5][1]);
+                        lstBuocGiai.add("h = 2s/c = " + String.valueOf(value));
                         break;
                 }
                 break;
@@ -346,18 +375,22 @@ public class TriangleHandle {
                     case 3:
                         //a = 2p - b - c
                         value = (float)(2f * VTable[6][2] - VTable[4][0] - VTable[5][1]);
+                        lstBuocGiai.add("a = 2p-b-c = " + String.valueOf(value));
                         break;
                     case 4:
                         //'b = 2p - a - c'
                         value = (float)(2f * VTable[6][2] - VTable[3][0] - VTable[5][1]);
+                        lstBuocGiai.add("b = 2p-a-c = " + String.valueOf(value));
                         break;
                     case 5:
                         //'c = 2p - a - b'
                         value = (float)(2f * VTable[6][2] - VTable[3][0] - VTable[4][0]);
+                        lstBuocGiai.add("c = 2p-a-b = " + String.valueOf(value));
                         break;
                     case 6:
                         //"p = (a + b + c) / 2"
                         value = (float)((VTable[3][0] + VTable[4][0] + VTable[5][1]) / 2f);
+                        lstBuocGiai.add("p = (a+b+c)/2 = " + String.valueOf(value));
                         break;
                 }
                 break;

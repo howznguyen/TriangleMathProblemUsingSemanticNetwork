@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BaiToanTamGiac.GUI;
+package TriangleMathProblemUsingSemanticNetwork.GUI;
 
-import BaiToanTamGiac.Handles.TriangleHandle;
+import TriangleMathProblemUsingSemanticNetwork.Handles.TriangleHandle;
 
 import javax.swing.*;
 import javax.swing.table.*;
-import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -24,10 +24,9 @@ public class MainUI extends javax.swing.JFrame {
      * Creates new form MainUI
      */
     public MainUI() {
-        this.setLocationRelativeTo(null);
         initComponents();
         initDatas();
-
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -64,24 +63,28 @@ public class MainUI extends javax.swing.JFrame {
         lbP = new javax.swing.JLabel();
         txtP = new javax.swing.JTextField();
         lbhC = new javax.swing.JLabel();
-        txthC = new javax.swing.JTextField();
+        txtH = new javax.swing.JTextField();
         btnNhapLai = new javax.swing.JButton();
         btnThongTin = new javax.swing.JButton();
         imgEleAndEqua = new javax.swing.JLabel();
+        pnRTable = new javax.swing.JPanel();
         scpRTable = new javax.swing.JScrollPane();
         tblRTable = new javax.swing.JTable();
+        pnRTable1 = new javax.swing.JPanel();
+        scpBuocGiai = new javax.swing.JScrollPane();
+        listBuocGiai = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bài Toán Tam Giác - Mạng Ngữ Nghĩa");
         setLocationByPlatform(true);
-        setPreferredSize(new java.awt.Dimension(1200, 700));
+        setPreferredSize(new java.awt.Dimension(920, 710));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
 
         lbTitle.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbTitle.setText("BÀI TOÁN TAM GIÁC - MẠNG NGỮ NGHĨA");
 
-        imgTriangle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BaiToanTamGiac/Resoures/triangle.png"))); // NOI18N
+        imgTriangle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TriangleMathProblemUsingSemanticNetwork/Resoures/triangle.png"))); // NOI18N
 
         pnResult.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tính Giá Trị", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
 
@@ -131,9 +134,27 @@ public class MainUI extends javax.swing.JFrame {
 
         lbAlpha.setText("Góc Alpha");
 
+        txtAlpha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAlphaKeyTyped(evt);
+            }
+        });
+
         lbBeta.setText("Góc Beta");
 
+        txtBeta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBetaKeyTyped(evt);
+            }
+        });
+
         lbDelta.setText("Góc Delta");
+
+        txtDelta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDeltaKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnAnglesLayout = new javax.swing.GroupLayout(pnAngles);
         pnAngles.setLayout(pnAnglesLayout);
@@ -155,7 +176,7 @@ public class MainUI extends javax.swing.JFrame {
         pnAnglesLayout.setVerticalGroup(
             pnAnglesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnAnglesLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnAnglesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbAlpha)
                     .addComponent(txtAlpha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -166,27 +187,32 @@ public class MainUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnAnglesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbDelta)
-                    .addComponent(txtDelta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtDelta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pnSides.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "GÓC", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
 
         lbA.setText("Cạnh A");
 
-        txtA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAActionPerformed(evt);
+        txtA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAKeyTyped(evt);
             }
         });
 
         lbB.setText("Cạnh B");
 
+        txtB.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBKeyTyped(evt);
+            }
+        });
+
         lbC.setText("Cạnh C");
 
-        txtC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCActionPerformed(evt);
+        txtC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCKeyTyped(evt);
             }
         });
 
@@ -214,7 +240,7 @@ public class MainUI extends javax.swing.JFrame {
         pnSidesLayout.setVerticalGroup(
             pnSidesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnSidesLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnSidesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbA)
                     .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -225,19 +251,24 @@ public class MainUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnSidesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbC)
-                    .addComponent(txtC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         lbP.setText("Diện Tích");
 
-        txtP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPActionPerformed(evt);
+        txtP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPKeyTyped(evt);
             }
         });
 
-        lbhC.setText("Chiều Cao");
+        lbhC.setText("Đường Cao");
+
+        txtH.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHKeyTyped(evt);
+            }
+        });
 
         btnNhapLai.setText("Nhập Lại");
         btnNhapLai.addActionListener(new java.awt.event.ActionListener() {
@@ -265,14 +296,14 @@ public class MainUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnSides, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnElementsLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
+                        .addGap(6, 6, 6)
                         .addGroup(pnElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbP)
-                            .addComponent(lbhC))
+                            .addComponent(lbhC)
+                            .addComponent(lbP))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtP, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                            .addComponent(txthC))
+                            .addComponent(txtP, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                            .addComponent(txtH))
                         .addGap(18, 18, 18)
                         .addComponent(btnNhapLai)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -286,6 +317,7 @@ public class MainUI extends javax.swing.JFrame {
                 .addGroup(pnElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnAngles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnSides, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
                 .addGroup(pnElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnElementsLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -295,8 +327,8 @@ public class MainUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbhC)
-                            .addComponent(txthC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(50, 50, 50))
+                            .addComponent(txtH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33))
                     .addGroup(pnElementsLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(pnElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -305,7 +337,9 @@ public class MainUI extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        imgEleAndEqua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BaiToanTamGiac/Resoures/hinhquanhe.png"))); // NOI18N
+        imgEleAndEqua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/TriangleMathProblemUsingSemanticNetwork/Resoures/bangyeutocongthuc.png"))); // NOI18N
+
+        pnRTable.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "BẢNG QUAN HỆ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 18))); // NOI18N
 
         tblRTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -317,78 +351,153 @@ public class MainUI extends javax.swing.JFrame {
         ));
         scpRTable.setViewportView(tblRTable);
 
+        javax.swing.GroupLayout pnRTableLayout = new javax.swing.GroupLayout(pnRTable);
+        pnRTable.setLayout(pnRTableLayout);
+        pnRTableLayout.setHorizontalGroup(
+            pnRTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(pnRTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnRTableLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(scpRTable, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        pnRTableLayout.setVerticalGroup(
+            pnRTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+            .addGroup(pnRTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRTableLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(scpRTable, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        pnRTable1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CÁC BƯỚC GIẢI", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 18))); // NOI18N
+
+        scpBuocGiai.setViewportView(listBuocGiai);
+
+        javax.swing.GroupLayout pnRTable1Layout = new javax.swing.GroupLayout(pnRTable1);
+        pnRTable1.setLayout(pnRTable1Layout);
+        pnRTable1Layout.setHorizontalGroup(
+            pnRTable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 412, Short.MAX_VALUE)
+            .addGroup(pnRTable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnRTable1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(scpBuocGiai, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        pnRTable1Layout.setVerticalGroup(
+            pnRTable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 202, Short.MAX_VALUE)
+            .addGroup(pnRTable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnRTable1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(scpBuocGiai, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnElements, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(imgTriangle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(scpRTable, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(imgEleAndEqua)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pnElements, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(imgTriangle)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pnResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pnRTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(pnRTable1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(imgEleAndEqua))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(201, 201, 201)
+                        .addComponent(lbTitle)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbTitle)
-                .addGap(329, 329, 329))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(imgEleAndEqua)
+                        .addGap(18, 18, 18)
+                        .addComponent(pnRTable1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(imgTriangle)
                             .addComponent(pnResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(pnElements, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnElements, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scpRTable, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(imgEleAndEqua))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(pnRTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTinhActionPerformed
-        // TODO add your handling code here:
         btnTinh();
         
     }//GEN-LAST:event_btnTinhActionPerformed
 
-    private void txtAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtAActionPerformed
-
-    private void txtCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCActionPerformed
-
-    private void txtPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPActionPerformed
-
     private void btnNhapLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapLaiActionPerformed
-        // TODO add your handling code here:
         btnNhapLai();
     }//GEN-LAST:event_btnNhapLaiActionPerformed
 
     private void btnThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinActionPerformed
-        // TODO add your handling code here:
         btnThongTin();
 
     }//GEN-LAST:event_btnThongTinActionPerformed
 
+    private void txtAlphaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAlphaKeyTyped
+        checkNumber(evt,txtAlpha);
+    }//GEN-LAST:event_txtAlphaKeyTyped
+
+    private void txtBetaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBetaKeyTyped
+        checkNumber(evt,txtBeta);
+    }//GEN-LAST:event_txtBetaKeyTyped
+
+    private void txtDeltaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDeltaKeyTyped
+        checkNumber(evt,txtDelta);
+    }//GEN-LAST:event_txtDeltaKeyTyped
+
+    private void txtAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAKeyTyped
+        checkNumber(evt,txtA);
+    }//GEN-LAST:event_txtAKeyTyped
+
+    private void txtBKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBKeyTyped
+        checkNumber(evt,txtB);
+    }//GEN-LAST:event_txtBKeyTyped
+
+    private void txtCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCKeyTyped
+        checkNumber(evt,txtC);
+    }//GEN-LAST:event_txtCKeyTyped
+
+    private void txtPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPKeyTyped
+        checkNumber(evt,txtP);
+    }//GEN-LAST:event_txtPKeyTyped
+
+    private void txtHKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHKeyTyped
+        checkNumber(evt,txtH);
+    }//GEN-LAST:event_txtHKeyTyped
+
+    /**
+     * Init Default Value when Program start
+     */
     private void initDatas(){
         txtElements.add(txtAlpha);
         txtElements.add(txtBeta);
@@ -397,7 +506,7 @@ public class MainUI extends javax.swing.JFrame {
         txtElements.add(txtB);
         txtElements.add(txtC);
         txtElements.add(txtP);
-        txtElements.add(txthC);
+        txtElements.add(txtH);
         tblRTable.setEnabled(false);
         tblRTable.setDragEnabled(false);
         tblRTable.getTableHeader().setEnabled(false);
@@ -407,14 +516,56 @@ public class MainUI extends javax.swing.JFrame {
         }
         triangleHandle.initRVTable();
         setRTable(triangleHandle.getRTable());
-        
-
-        
-        
     }
 
     /**
-     *
+     * Action if Button Tinh Clicked
+     */
+    private void btnTinh(){
+        String selectElements = cbSelectElement.getSelectedItem().toString();
+        if(!selectElements.equals("Giá Trị Cần Tính")){
+            triangleHandle.start(txtElements,txtResult,selectElements);
+            setRTable(triangleHandle.getRTable());
+            setBuocGiai(triangleHandle.getLstBuocGiai());
+        }else{
+            JOptionPane.showMessageDialog(null,"Vui lòng chọn yếu tố cần tính.","Báo Lỗi!",JOptionPane.OK_OPTION);
+        }
+
+    }
+
+    /**
+     * Action if Button NhapLai Clicked
+     */
+    private void btnNhapLai(){
+        cbSelectElement.setSelectedIndex(0);
+        txtResult.setText("");
+        for (JTextField txt: txtElements) {
+            txt.setText("");
+        }
+        triangleHandle.initRVTable();
+        this.setRTable(triangleHandle.getRTable());
+        this.setBuocGiai(null);
+    }
+
+    /**
+     * Action if Button ThongTin Clicked
+     */
+    private void btnThongTin(){
+        JOptionPane.showMessageDialog(null, "- Đồ Án Tính Tam Giác Sử Dụng Mạng Ngữ Nghĩa" +
+                        "\n- HUFI - Khoa CNTT - Lớp Trí Tuệ Nhân Tạo + JAVA" +
+                        "\n- Thành Viên:" +
+                        "\n+ 2001181078 - Nguyễn Trần Phương Duy - Trưởng Nhóm" +
+                        "\n+ 2001181293 - Cao Quang Sơn" +
+                        "\n+ 2001181291 - Ngô Thị Như Quỳnh" +
+                        "\n+ 2001181437 - Phan Mai Như Ý" +
+                        "\n- Email: duyntp2000@gmail.com" +
+                        "\n- Github: chenjiinguyen", "Thông Tin Nhóm",
+                JOptionPane.INFORMATION_MESSAGE,
+                new ImageIcon(getClass().getResource("/TriangleMathProblemUsingSemanticNetwork/Resoures/hufi.png")));
+    }
+
+    /**
+     * Set RTable
      * @param RTable
      */
     private void setRTable(int [][] RTable){
@@ -423,7 +574,7 @@ public class MainUI extends javax.swing.JFrame {
         for (String str : new String[] {"Yếu Tố","CT1","CT2","CT3","CT4","CT5","CT6"}) {
             dataRTable.addColumn(str);
         }
-
+        tblRTable.getColumnModel().getColumn(0).setPreferredWidth(100);
         Object[] dataElements = new Object[] {"Góc Alpha","Góc Beta","Góc Delta","Cạnh A","Cạnh B","Cạnh C","Chu Vi","Diện Tích","Đường Cao"};
         for (int i = 0; i < RTable.length; i++) {
             Vector v = new Vector();
@@ -438,52 +589,48 @@ public class MainUI extends javax.swing.JFrame {
             cellStyle.setHorizontalAlignment(JLabel.CENTER);
             tblRTable.getColumnModel().getColumn(i).setCellRenderer(cellStyle);
         }
-
-
-
-
     }
 
     /**
-     *
+     * Set BuocGiai JList
+     * @param lstBuocGiai
      */
-    private void btnTinh(){
-        String selectElements = cbSelectElement.getSelectedItem().toString();
-        if(!selectElements.equals("Giá Trị Cần Tính")){
-            triangleHandle.start(txtElements,txtResult,selectElements);
-            setRTable(triangleHandle.getRTable());
-        }else{
-            JOptionPane.showMessageDialog(null,"Vui lòng chọn yếu tố cần tính.","Báo Lỗi!",JOptionPane.OK_OPTION);
+    private void setBuocGiai(ArrayList<String> lstBuocGiai){
+        Vector dataBuocGiai = new Vector();
+        dataBuocGiai.clear();
+        listBuocGiai.setListData(dataBuocGiai);
+        for (String buocGiai: lstBuocGiai) {
+            dataBuocGiai.add(buocGiai);
         }
-
     }
-
-    private void btnNhapLai(){
-        cbSelectElement.setSelectedIndex(0);
-        txtResult.setText("");
-        for (JTextField txt: txtElements) {
-            txt.setText("");
-        }
-        triangleHandle.initRVTable();
-        this.setRTable(triangleHandle.getRTable());
-    }
-
-    private void btnThongTin(){
-        JOptionPane.showMessageDialog(null, "- Đồ Án Tính Tam Giác Sử Dụng Mạng Ngữ Nghĩa" +
-                "\n- HUFI - Khoa CNTT - Lớp Trí Tuệ Nhân Tạo + JAVA" +
-                "\n- Thành Viên:" +
-                "\n+ 2001181078 - Nguyễn Trần Phương Duy - Trưởng Nhóm" +
-                "\n+ 2001181293 - Cao Quang Sơn" +
-                "\n+ 2001181291 - Ngô Thị Như Quỳnh" +
-                "\n+ 2001181437 - Phan Mai Như Ý" +
-                "\n- Email: duyntp2000@gmail.com" +
-                "\n- Github: chenjiinguyen", "Thông Tin Nhóm",
-                JOptionPane.INFORMATION_MESSAGE,
-                new ImageIcon(getClass().getResource("/BaiToanTamGiac/Resoures/hufi.png")));
-    }
-
 
     /**
+     * Check TextField is Positive Real Numbers
+     * @param evt
+     * @param txtText
+     */
+    private  void checkNumber(KeyEvent evt,JTextField txtText){
+        boolean dot = false;
+        char vChar = evt.getKeyChar();
+        if (txtText.getText().equals(""))
+            dot = false;
+        if (dot == false){
+            if (vChar == '.') dot = true;
+            else if (!(Character.isDigit(vChar)
+                    || (vChar == KeyEvent.VK_BACK_SPACE)
+                    || (vChar == KeyEvent.VK_DELETE))) {
+                evt.consume();
+            }
+        } else {
+            if (!(Character.isDigit(vChar)
+                    || (vChar == KeyEvent.VK_BACK_SPACE)
+                    || (vChar == KeyEvent.VK_DELETE))) {
+                evt.consume();
+            }
+        }
+    }
+
+   /**
      * @param args the command line arguments
      */
 
@@ -504,10 +651,14 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel lbResult;
     private javax.swing.JLabel lbTitle;
     private javax.swing.JLabel lbhC;
+    private javax.swing.JList<String> listBuocGiai;
     private javax.swing.JPanel pnAngles;
     private javax.swing.JPanel pnElements;
+    private javax.swing.JPanel pnRTable;
+    private javax.swing.JPanel pnRTable1;
     private javax.swing.JPanel pnResult;
     private javax.swing.JPanel pnSides;
+    private javax.swing.JScrollPane scpBuocGiai;
     private javax.swing.JScrollPane scpRTable;
     private javax.swing.JTable tblRTable;
     private javax.swing.JTextField txtA;
@@ -516,8 +667,8 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtBeta;
     private javax.swing.JTextField txtC;
     private javax.swing.JTextField txtDelta;
+    private javax.swing.JTextField txtH;
     private javax.swing.JTextField txtP;
     private javax.swing.JTextField txtResult;
-    private javax.swing.JTextField txthC;
     // End of variables declaration//GEN-END:variables
 }

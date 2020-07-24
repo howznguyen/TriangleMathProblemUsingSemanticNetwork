@@ -1,4 +1,4 @@
-package BaiToanTamGiac.GUI;
+package TriangleMathProblemUsingSemanticNetwork.GUI;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

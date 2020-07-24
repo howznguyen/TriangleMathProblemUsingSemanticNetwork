@@ -1,6 +1,6 @@
-package BaiToanTamGiac;
+package TriangleMathProblemUsingSemanticNetwork;
 
-import BaiToanTamGiac.GUI.MainUI;
+import TriangleMathProblemUsingSemanticNetwork.GUI.MainUI;
 
 public class Main {
     public static void main(String[] args) {
