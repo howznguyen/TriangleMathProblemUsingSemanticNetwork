@@ -30,6 +30,6 @@ hs_err_pid*
 #Folder Class of IntelliJ IDEA & NetBeans SE
 out
 build
-
+.DS_Store
 
 # End of https://www.toptal.com/developers/gitignore/api/java.DS_Store
