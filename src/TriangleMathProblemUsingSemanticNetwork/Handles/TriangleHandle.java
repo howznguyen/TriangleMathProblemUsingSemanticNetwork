@@ -40,21 +40,50 @@ public class TriangleHandle {
      * Start Action Calculate
      */
     public void start(ArrayList<JTextField> txtElements,JTextField txtResult, String selectElement){
+        // Clear in ListBuocGiai
         lstBuocGiai.clear();
+
+        // Set Flat is true
         boolean flag = true;
+
+        // Get All Value User Type
         this.getAllElementsInGUI(txtElements);
+
+        // Run Loop with condition is flag is true
         while(flag == true){
+
+            // set flag is false
             flag = false;
+
+            // Run Loop with from first equation to last equation in Program
             for (int i = 0; i < equationNumber; i++) {
+
+                // Get element you type in this equation
                 int getElement = this.getElement(i);
+
+                // Condition if element exits
                 if(getElement != -1){
+
+                    // Condition if variable stop is 1 then stop func
                     if(stop == 1)
                         break;
+
+                    // Run Spreading Mechanismactive with equation and element
                     activeSpreadingMechanismactive(i, getElement);
+
+                    // Set flag is true
                     flag = true;
+
+                    // Condition Element you want calculator have been calculated
                     if(checkElementCaculated(selectElement)){
+
+                        // If Exits then Write Result into TextField Result
                         writeElementCaculated(selectElement, txtResult);
+
+                        // Set flag is false
                         flag = false;
+
+                        // Exit function
                         break;
                     }
                 }

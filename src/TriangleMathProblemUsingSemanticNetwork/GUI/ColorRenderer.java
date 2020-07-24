@@ -4,6 +4,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 
+/**
+ * Class Set Background Color in JTable
+ */
 public class ColorRenderer extends DefaultTableCellRenderer {
     public ColorRenderer() {
         super();

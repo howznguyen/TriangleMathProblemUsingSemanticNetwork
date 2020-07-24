@@ -20,6 +20,7 @@ import java.util.Vector;
 public class MainUI extends javax.swing.JFrame {
     TriangleHandle triangleHandle = new TriangleHandle();
     ArrayList<JTextField> txtElements = new ArrayList<JTextField>();
+
     /**
      * Creates new form MainUI
      */
@@ -190,7 +191,7 @@ public class MainUI extends javax.swing.JFrame {
                     .addComponent(txtDelta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        pnSides.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "GÓC", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
+        pnSides.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CẠNH", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 0, 14))); // NOI18N
 
         lbA.setText("Cạnh A");
 
@@ -575,7 +576,7 @@ public class MainUI extends javax.swing.JFrame {
             dataRTable.addColumn(str);
         }
         tblRTable.getColumnModel().getColumn(0).setPreferredWidth(100);
-        Object[] dataElements = new Object[] {"Góc Alpha","Góc Beta","Góc Delta","Cạnh A","Cạnh B","Cạnh C","Chu Vi","Diện Tích","Đường Cao"};
+        Object[] dataElements = new Object[] {"Góc Alpha","Góc Beta","Góc Delta","Cạnh A","Cạnh B","Cạnh C","Nửa Chu Vi","Diện Tích","Đường Cao"};
         for (int i = 0; i < RTable.length; i++) {
             Vector v = new Vector();
             v.add(dataElements[i]);
