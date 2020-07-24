@@ -12,6 +12,10 @@ public class TriangleHandle {
     private float [][] VTable = new float[this.elementsNumber][this.equationNumber]; // Value Table
     private int stop;
 
+    /**
+     * Get RTable
+     * @return int [][]
+     */
     public int[][] getRTable() {
         return RTable;
     }
@@ -490,16 +494,6 @@ public class TriangleHandle {
 
 
     // Other Functions
-
-    public void printMatrix(float[][] matrix) {
-        for (int row = 0; row < matrix.length; row++) {
-            for (int col = 0; col < matrix[row].length; col++) {
-                System.out.printf("%4.2f", matrix[row][col]);
-            }
-            System.out.println();
-        }
-        System.out.println("====================================");
-    }
 
     /**
      * Check String Is Null Or Empty

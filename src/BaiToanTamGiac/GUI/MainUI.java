@@ -66,6 +66,7 @@ public class MainUI extends javax.swing.JFrame {
         lbhC = new javax.swing.JLabel();
         txthC = new javax.swing.JTextField();
         btnNhapLai = new javax.swing.JButton();
+        btnThongTin = new javax.swing.JButton();
         imgEleAndEqua = new javax.swing.JLabel();
         scpRTable = new javax.swing.JScrollPane();
         tblRTable = new javax.swing.JTable();
@@ -245,13 +246,20 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
 
+        btnThongTin.setText("Thông Tin");
+        btnThongTin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongTinActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnElementsLayout = new javax.swing.GroupLayout(pnElements);
         pnElements.setLayout(pnElementsLayout);
         pnElementsLayout.setHorizontalGroup(
             pnElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnElementsLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pnElementsLayout.createSequentialGroup()
                         .addComponent(pnAngles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -265,8 +273,11 @@ public class MainUI extends javax.swing.JFrame {
                         .addGroup(pnElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtP, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                             .addComponent(txthC))
-                        .addGap(78, 78, 78)
-                        .addComponent(btnNhapLai))))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnNhapLai)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnThongTin)
+                        .addGap(16, 16, 16))))
         );
         pnElementsLayout.setVerticalGroup(
             pnElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,7 +299,9 @@ public class MainUI extends javax.swing.JFrame {
                         .addGap(50, 50, 50))
                     .addGroup(pnElementsLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(btnNhapLai)
+                        .addGroup(pnElementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnNhapLai)
+                            .addComponent(btnThongTin))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -370,6 +383,12 @@ public class MainUI extends javax.swing.JFrame {
         btnNhapLai();
     }//GEN-LAST:event_btnNhapLaiActionPerformed
 
+    private void btnThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinActionPerformed
+        // TODO add your handling code here:
+        btnThongTin();
+
+    }//GEN-LAST:event_btnThongTinActionPerformed
+
     private void initDatas(){
         txtElements.add(txtAlpha);
         txtElements.add(txtBeta);
@@ -449,6 +468,20 @@ public class MainUI extends javax.swing.JFrame {
         this.setRTable(triangleHandle.getRTable());
     }
 
+    private void btnThongTin(){
+        JOptionPane.showMessageDialog(null, "- Đồ Án Tính Tam Giác Sử Dụng Mạng Ngữ Nghĩa" +
+                "\n- HUFI - Khoa CNTT - Lớp Trí Tuệ Nhân Tạo + JAVA" +
+                "\n- Thành Viên:" +
+                "\n+ 2001181078 - Nguyễn Trần Phương Duy - Trưởng Nhóm" +
+                "\n+ 2001181293 - Cao Quang Sơn" +
+                "\n+ 2001181291 - Ngô Thị Như Quỳnh" +
+                "\n+ 2001181437 - Phan Mai Như Ý" +
+                "\n- Email: duyntp2000@gmail.com" +
+                "\n- Github: chenjiinguyen", "Thông Tin Nhóm",
+                JOptionPane.INFORMATION_MESSAGE,
+                new ImageIcon(getClass().getResource("/BaiToanTamGiac/Resoures/hufi.png")));
+    }
+
 
     /**
      * @param args the command line arguments
@@ -456,6 +489,7 @@ public class MainUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNhapLai;
+    private javax.swing.JButton btnThongTin;
     private javax.swing.JButton btnTinh;
     private javax.swing.JComboBox<String> cbSelectElement;
     private javax.swing.JLabel imgEleAndEqua;
@@ -486,23 +520,4 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtResult;
     private javax.swing.JTextField txthC;
     // End of variables declaration//GEN-END:variables
-}
-
-// Customize the code to set the background and foreground color for each column of a JTable
-class ColorRenderer extends DefaultTableCellRenderer {
-    public ColorRenderer() {
-        super();
-    }
-    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,   boolean hasFocus, int row, int column) {
-        Component cell = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-        if(value.equals(-1)) {
-            cell.setBackground(Color.CYAN);
-        } else if(value.equals(1)){
-            cell.setBackground(Color.YELLOW);
-        }else{
-            cell.setBackground(Color.WHITE);
-        }
-
-        return cell;
-    }
 }
