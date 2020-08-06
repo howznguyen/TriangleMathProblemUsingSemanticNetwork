@@ -523,6 +523,7 @@ public class MainUI extends javax.swing.JFrame {
      * Action if Button Tinh Clicked
      */
     private void btnTinh(){
+        setBuocGiai(null);
         String selectElements = cbSelectElement.getSelectedItem().toString();
         if(!selectElements.equals("Giá Trị Cần Tính")){
             triangleHandle.start(txtElements,txtResult,selectElements);
@@ -599,10 +600,14 @@ public class MainUI extends javax.swing.JFrame {
     private void setBuocGiai(ArrayList<String> lstBuocGiai){
         Vector dataBuocGiai = new Vector();
         dataBuocGiai.clear();
-        listBuocGiai.setListData(dataBuocGiai);
-        for (String buocGiai: lstBuocGiai) {
-            dataBuocGiai.add(buocGiai);
+        if(lstBuocGiai != null)
+        {
+            listBuocGiai.setListData(dataBuocGiai);
+            for (String buocGiai: lstBuocGiai) {
+                dataBuocGiai.add(buocGiai);
+            }
         }
+
     }
 
     /**
