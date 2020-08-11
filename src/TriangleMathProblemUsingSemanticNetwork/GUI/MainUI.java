@@ -600,9 +600,9 @@ public class MainUI extends javax.swing.JFrame {
     private void setBuocGiai(ArrayList<String> lstBuocGiai){
         Vector dataBuocGiai = new Vector();
         dataBuocGiai.clear();
+        listBuocGiai.setListData(dataBuocGiai);
         if(lstBuocGiai != null)
         {
-            listBuocGiai.setListData(dataBuocGiai);
             for (String buocGiai: lstBuocGiai) {
                 dataBuocGiai.add(buocGiai);
             }
